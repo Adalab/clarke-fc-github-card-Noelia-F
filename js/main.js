@@ -20,4 +20,21 @@ const initial = function(){
         selectUser.appendChild(optionUser);
       }
     });
+
+  selectUser.addEventListener('change', ()=> {
+    let userName = event.target.value;
+    if(userName !== 'Elige una usuaria'){
+      fetch(`https://api.github.com/users/${userName}`)
+        .then(function(response){
+            return response.json();
+        })
+        .then(function(json){
+          memberInfo = json;
+          renderUserInfo(memberInfo);
+        })
+    } else {
+      location.reload();
+    }
+  });
+  
 }
