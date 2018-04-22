@@ -46,7 +46,7 @@ const initial = function(){
     }
 
     userBox.innerHTML = `
-    <d1iv class="member-avatar__box">
+    <div class="member-avatar__box">
     <img class="member-avatar" src=https://avatars1.githubusercontent.com/u/${memberInfo.id} alt="memeber avatar">
     </div>
     <div class="member-info">
@@ -58,15 +58,15 @@ const initial = function(){
       </div>
     </div>
     <div class="member-social">
-      <div>
+      <div class="member-social__section">
         <h3 class="member-social__title">${memberInfo.public_repos}</h3>
         <p class="member-social__info">Repos</p>
       </div>
-      <div>
+      <div class="member-social__section">
         <h3 class="member-social__title">${memberInfo.followers}</h3>
         <p class="member-social__info">Followers</p>
       </div>
-      <div>
+      <div class="member-social__section">
         <h3 class="member-social__title">${memberInfo.following}</h3>
         <p class="member-social__info">Following</p>
       </div>
