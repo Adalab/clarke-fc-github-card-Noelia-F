@@ -46,7 +46,7 @@ const initial = function(){
     }
 
     userBox.innerHTML = `
-    <img class="member-avatar" src=https//avatars1.githubusercontent.com/u/${memberInfo.id} alt="memeber avatar">
+    <img class="member-avatar" src=https://avatars1.githubusercontent.com/u/${memberInfo.id} alt="memeber avatar">
     <div class="member-info">
       <h1 class="member__user-name">@${memberInfo.login}</h1>
       <h2 class="member__name">${memberInfo.name}</h2>
