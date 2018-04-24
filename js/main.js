@@ -13,7 +13,7 @@ const initial = function(){
     .then(function(json){
       adalabMembers = json;
 
-      for(let i=0; i<adalabMembers.length; i++){
+      for(let i = 0; i < adalabMembers.length; i++){
         let optionUser = document.createElement('option');
         optionUser.value = adalabMembers[i].login;
         optionUser.innerHTML = adalabMembers[i].login;
@@ -21,7 +21,7 @@ const initial = function(){
       }
     });
 
-  selectUser.addEventListener('change', ()=> {
+  selectUser.addEventListener('change', () => {
     let userName = event.target.value;
     if(userName !== 'Elige una usuaria'){
       fetch(`https://api.github.com/users/${userName}`)
@@ -33,7 +33,7 @@ const initial = function(){
           renderUserInfo(memberInfo);
         })
     } else {
-      location.reload();
+      userBox.innerHTML = ''; 
     }
   });
   function renderUserInfo(memberInfo){
@@ -58,20 +58,18 @@ const initial = function(){
       </div>
     </div>
     <div class="member-social">
-      <div class="member-social__section">
-        <h3 class="member-social__title">${memberInfo.public_repos}</h3>
-        <p class="member-social__info">Repos</p>
-      </div>
-      <div class="member-social__section">
-        <h3 class="member-social__title">${memberInfo.followers}</h3>
-        <p class="member-social__info">Followers</p>
-      </div>
-      <div class="member-social__section">
-        <h3 class="member-social__title">${memberInfo.following}</h3>
-        <p class="member-social__info">Following</p>
-      </div>
+      ${createMemberSection(memberInfo.public_repos, 'Repos')}
+      ${createMemberSection(memberInfo.followers, 'Followers')}
+      ${createMemberSection(memberInfo.following, 'Following')}
     </div>`;
     memberSince.innerHTML = `Miembro desde ${new Date(memberInfo.created_at).getFullYear()}`;
+  }
+
+  function createMemberSection(title, info){
+    return `<div class="member-social__section">
+      <h3 class="member-social__title">${title}</h3>
+      <p class="member-social__info">${info}</p>
+    </div>`;
   }
 }
 
